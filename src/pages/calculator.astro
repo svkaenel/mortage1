@@ -1,0 +1,54 @@
+---
+import '@/styles/globals.css'
+import Layout from '../layouts/Layout.astro';
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+---
+
+<Layout title="Mortgage Calculator - MortgagePro">
+	<main class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold mb-8 text-center">Mortgage Calculator</h1>
+		<Card class="max-w-md mx-auto">
+			<CardHeader>
+				<CardTitle>Calculate Your Monthly Payment</CardTitle>
+				<CardDescription>Enter your loan details below</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<form class="space-y-4">
+					<div>
+						<Label htmlFor="loanAmount">Loan Amount ($)</Label>
+						<Input type="number" id="loanAmount" placeholder="e.g., 200000" />
+					</div>
+					<div>
+						<Label htmlFor="interestRate">Interest Rate (%)</Label>
+						<Input type="number" id="interestRate" placeholder="e.g., 3.5" step="0.1" />
+					</div>
+					<div>
+						<Label htmlFor="loanTerm">Loan Term (years)</Label>
+						<Input type="number" id="loanTerm" placeholder="e.g., 30" />
+					</div>
+					<Button type="submit" class="w-full">Calculate</Button>
+				</form>
+			</CardContent>
+		</Card>
+		<div id="result" class="mt-8 text-center text-xl font-semibold"></div>
+	</main>
+</Layout>
+
+<script>
+	const form = document.querySelector('form');
+	const resultDiv = document.getElementById('result');
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+		const interestRate = parseFloat(document.getElementById('interestRate').value) / 100 / 12;
+		const loanTerm = parseFloat(document.getElementById('loanTerm').value) * 12;
+
+		const monthlyPayment = (loanAmount * interestRate * Math.pow(1 + interestRate, loanTerm)) / (Math.pow(1 + interestRate, loanTerm) - 1);
+
+		resultDiv.textContent = `Estimated Monthly Payment: $${monthlyPayment.toFixed(2)}`;
+	});
+</script>

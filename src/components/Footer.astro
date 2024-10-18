@@ -1,0 +1,30 @@
+---
+import { Separator } from "@/components/ui/separator"
+---
+
+<footer class="bg-background border-t mt-12">
+	<div class="container mx-auto px-4 py-8">
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<div>
+				<h3 class="text-lg font-semibold mb-4">MortgagePro</h3>
+				<p class="text-sm text-muted-foreground">Your trusted partner in home financing since 2023.</p>
+			</div>
+			<div>
+				<h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+				<ul class="space-y-2">
+					<li><a href="/" class="text-sm text-muted-foreground hover:text-foreground">Home</a></li>
+					<li><a href="/calculator" class="text-sm text-muted-foreground hover:text-foreground">Mortgage Calculator</a></li>
+					<li><a href="/blog" class="text-sm text-muted-foreground hover:text-foreground">Blog</a></li>
+				</ul>
+			</div>
+			<div>
+				<h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+				<p class="text-sm text-muted-foreground">1234 Mortgage Lane<br>Cityville, ST 12345<br>Phone: (555) 123-4567<br>Email: info@mortgagepro.com</p>
+			</div>
+		</div>
+		<Separator className="my-8" />
+		<div class="text-center text-sm text-muted-foreground">
+			© 2023 MortgagePro. All rights reserved.
+		</div>
+	</div>
+</footer>

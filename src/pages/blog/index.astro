@@ -1,0 +1,27 @@
+---
+import '@/styles/globals.css'
+import Layout from '../../layouts/Layout.astro';
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+
+const posts = [
+	{ title: "Understanding Mortgage Rates", slug: "understanding-mortgage-rates", description: "Learn about the factors that influence mortgage rates and how they affect your home loan." },
+	{ title: "First-Time Homebuyer's Guide", slug: "first-time-homebuyer-guide", description: "Everything you need to know as a first-time homebuyer, from saving for a down payment to closing on your new home." },
+	{ title: "Refinancing: Is It Right for You?", slug: "refinancing-guide", description: "Explore the pros and cons of refinancing your mortgage and determine if it's the right move for your financial situation." },
+];
+---
+
+<Layout title="Mortgage Blog - MortgagePro">
+	<main class="container mx-auto px-4 py-8">
+		<h1 class="text-3xl font-bold mb-8 text-center">Mortgage Blog</h1>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{posts.map((post) => (
+				<Card>
+					<CardHeader>
+						<CardTitle>{post.title}</CardTitle>
+						<CardDescription>{post.description}</CardDescription>
+					</CardHeader>
+				</Card>
+			))}
+		</div>
+	</main>
+</Layout>
